@@ -2,7 +2,7 @@ const content = {
     en: {
         lang: 'en', dir: 'ltr', title: 'Ahmad Essam Abu Laban | Penetration Tester & Bug Bounty Hunter — Jordan',
         description: 'Cybersecurity student from Jordan focused on offensive security, penetration testing, vulnerability disclosure, and cloud infrastructure. Open to internships.',
-        nav: { about: 'About', projects: 'Projects', achievements: 'Achievements', switch: 'عربي' },
+        nav: { about: 'About', projects: 'Projects', achievements: 'Achievements', hobbies: 'Hobbies', contact: 'Contact', switch: 'عربي' },
         hero: { badge: 'Cybersecurity & Cloud Student', hi: "Hi, I'm", name: 'Ahmad Essam Abu Laban', tagline: 'Passionate about offensive security, penetration testing, and cloud infrastructure. Discovering vulnerabilities and building secure, dynamic applications.', contact: 'Contact Me', linkedin: 'LinkedIn', github: 'GitHub' },
         about: { title: 'About Me', highlight: 'Cybersecurity & Cloud Computing student', before: 'Motivated ', after: ' with hands-on experience in web application security testing, vulnerability disclosure, and cloud deployments. Discovered and responsibly disclosed a critical IDOR vulnerability in a live university system, winning a bug bounty award. Skilled in offensive security techniques, Linux administration, and full-stack web development.' },
         journey: { title: 'My Journey', education: 'Education', university: 'Ajloun National University', degree: 'B.Sc. in Cybersecurity and Cloud Computing', location: 'Ajloun, Jordan', graduation: 'Expected Graduation: 2028', courseworkLabel: 'Relevant Coursework', coursework: 'Network Security, Cloud Architecture, Web Application Security, Operating Systems, Python, JavaScript, C++, Cryptography, Data Structures and Algorithms, Database Systems, Artificial Intelligence' },
@@ -35,12 +35,32 @@ const content = {
             ]
         },
         languages: { title: 'Languages', items: [{ flag: '🇯🇴', name: 'Arabic', level: 'Native' }, { flag: '🇬🇧', name: 'English', level: 'Advanced (C1)' }] },
+        hobbies: {
+            title: 'Hobbies & Interests', items: [
+                { icon: '💻', title: 'Building and Experimenting', text: 'I enjoy exploring new tools, experimenting with security labs, and turning ideas into practical side projects.' },
+                { icon: '🔐', title: 'Cybersecurity Practice', text: 'I like testing vulnerabilities in controlled environments, reading write-ups, and improving my offensive security workflow.' },
+                { icon: '📚', title: 'Learning & Reading', text: 'I spend time reading technical articles, learning from open-source communities, and staying current on cloud and security trends.' },
+                { icon: '🏃', title: 'Outdoors & Movement', text: 'I value balance through hiking, walking, and staying active to stay creative and focused.' }
+            ]
+        },
+        contact: {
+            title: 'Contact Me',
+            intro: 'Have a project idea, research inquiry, or collaboration opportunity? I’d love to hear from you.',
+            infoTitle: 'Let’s connect',
+            infoText: 'Whether it’s a security discussion, development idea, or internship opportunity, I’m open to meaningful conversations.',
+            name: 'Name',
+            email: 'Email',
+            subject: 'Subject',
+            message: 'Message',
+            send: 'Send Message',
+            success: 'Thanks! Your message has been prepared and can be sent through your email client.'
+        },
         footer: { name: 'Ahmad Essam Abu Laban', rights: 'All rights reserved.' }
     },
     ar: {
         lang: 'ar', dir: 'rtl', title: 'أحمد عصام أبو لبن | مختبر اختراق وصائد ثغرات — الأردن',
         description: 'طالب أمن سيبراني من الأردن، مهتم بالأمن الهجومي واختبار الاختراق والإفصاح عن الثغرات والحوسبة السحابية. متاح لفرص التدريب.',
-        nav: { about: 'عنّي', projects: 'المشاريع', achievements: 'الإنجازات', switch: 'English' },
+        nav: { about: 'عنّي', projects: 'المشاريع', achievements: 'الإنجازات', hobbies: 'الهوايات', contact: 'التواصل', switch: 'English' },
         hero: { badge: 'طالب أمن سيبراني وحوسبة سحابية', hi: 'مرحباً، أنا', name: 'أحمد عصام أبو لبن', tagline: 'شغوف بالأمن الهجومي، واختبار اختراق المواقع، والبنية التحتية السحابية. أكتشف الثغرات وأبني تطبيقات آمنة.', contact: 'تواصل معي', linkedin: 'لينكد إن', github: 'GitHub' },
         about: { title: 'عنّي', highlight: 'طالب في الأمن السيبراني والحوسبة السحابية', before: '', after: ' لديه خبرة عملية في اختبار أمان تطبيقات الويب والإفصاح عن الثغرات والنشر السحابي. اكتشف وأفصح بمسؤولية عن ثغرة IDOR حرجة في نظام جامعي حي وفاز بجائزة مكافأة. يمتلك مهارات في الأمن الهجومي وإدارة Linux وتطوير الويب الشامل.' },
         journey: { title: 'مسيرتي', education: 'التعليم', university: 'جامعة عجلون الوطنية', degree: 'بكالوريوس في الأمن السيبراني والحوسبة السحابية', location: 'عجلون، الأردن', graduation: 'التخرج المتوقع: 2028', courseworkLabel: 'المواد الدراسية ذات الصلة', coursework: 'أمن الشبكات، هندسة السحابة، أمان تطبيقات الويب، أنظمة التشغيل، Python، JavaScript، التشفير، هياكل البيانات والخوارزميات، قواعد البيانات، الذكاء الاصطناعي' },
@@ -72,6 +92,26 @@ const content = {
             ]
         },
         languages: { title: 'اللغات', items: [{ flag: '🇯🇴', name: 'العربية', level: 'اللغة الأم' }, { flag: '🇬🇧', name: 'الإنجليزية', level: 'متقدم (C1)' }] },
+        hobbies: {
+            title: 'الهوايات والاهتمامات', items: [
+                { icon: '💻', title: 'البناء والتجريب', text: 'أحب استكشاف الأدوات الجديدة وتجربة مختبرات الأمان وتحويل الأفكار إلى مشاريع جانبية عملية.' },
+                { icon: '🔐', title: 'ممارسة الأمان السيبراني', text: 'أحب اختبار الثغرات في بيئات خاضعة للرقابة وقراءة التقارير وتحسين سير عملي في الأمن الهجومي.' },
+                { icon: '📚', title: 'التعلم والقراءة', text: 'أقضي وقتًا في قراءة المقالات التقنية والتعلم من المجتمعات مفتوحة المصدر ومتابعة الاتجاهات في السحابة والأمن.' },
+                { icon: '🏃', title: 'الهواء الطلق والحركة', text: 'أقدر التوازن من خلال المشي والرحلات الخارجية والبقاء نشيطًا للحفاظ على الإبداع والتركيز.' }
+            ]
+        },
+        contact: {
+            title: 'تواصل معي',
+            intro: 'لديك فكرة مشروع، استفسار بحثي، أو فرصة تعاون؟ يسعدني أن أسمع منك.',
+            infoTitle: 'دعنا نتواصل',
+            infoText: 'سواء كانت مناقشة أمنية، فكرة تطوير، أو فرصة تدريب، فأنا دائمًا منفتح على المحادثات المفيدة.',
+            name: 'الاسم',
+            email: 'البريد الإلكتروني',
+            subject: 'الموضوع',
+            message: 'الرسالة',
+            send: 'إرسال الرسالة',
+            success: 'شكرًا! تم تجهيز رسالتك ويمكن إرسالها عبر عميل البريد الإلكتروني الخاص بك.'
+        },
         footer: { name: 'أحمد عصام أبو لبن', rights: 'جميع الحقوق محفوظة.' }
     }
 };
@@ -105,6 +145,8 @@ function render(lang) {
 		<article class="glass-panel achievement"><div class="achievement-icon" aria-hidden="true">🏆</div><div><h3>${copy(item.title)} <span>— ${copy(item.org)} (${copy(item.date)})</span></h3><p>${copy(item.text)}</p></div></article>`).join('');
     const languages = t.languages.items.map((item) => `
 		<article class="glass-panel language-card"><div class="language-flag" aria-hidden="true">${item.flag}</div><h3>${copy(item.name)}</h3><p>${copy(item.level)}</p></article>`).join('');
+    const hobbies = t.hobbies.items.map((item) => `
+		<article class="glass-panel hobby-card"><div class="hobby-emoji" aria-hidden="true">${item.icon}</div><h3>${copy(item.title)}</h3><p>${copy(item.text)}</p></article>`).join('');
 
     main.innerHTML = `
 		<header class="container hero"><div class="hero-content">
@@ -122,11 +164,69 @@ function render(lang) {
 		${section('skills', copy(t.skills.title), `<div class="skill-grid">${skills}</div>`)}
 		${section('projects', copy(t.projects.title), `<div class="project-grid">${projects}</div>`)}
 		${section('achievements', copy(t.achievements.title), `<div class="achievement-list">${achievements}</div>`)}
-		${section('languages', copy(t.languages.title), `<div class="language-grid">${languages}</div>`)}`;
+		${section('hobbies', copy(t.hobbies.title), `<div class="hobby-grid">${hobbies}</div>`)}
+		${section('languages', copy(t.languages.title), `<div class="language-grid">${languages}</div>`)}
+		${section('contact', copy(t.contact.title), `
+			<div class="contact-grid">
+				<article class="glass-panel contact-card">
+					<h3>${copy(t.contact.infoTitle)}</h3>
+					<p>${copy(t.contact.intro)}</p>
+					<ul class="contact-list">
+						<li>ahmadessam3300@gmail.com</li>
+						<li>linkedin.com/in/ellprofessor</li>
+						<li>Amman, Jordan</li>
+					</ul>
+				</article>
+				<form class="glass-panel contact-form" id="contact-form" action="mailto:ahmadessam3300@gmail.com" method="post" enctype="text/plain">
+					<div class="form-row">
+						<div class="form-field">
+							<label for="contact-name">${copy(t.contact.name)}</label>
+							<input id="contact-name" name="name" type="text" required>
+						</div>
+						<div class="form-field">
+							<label for="contact-email">${copy(t.contact.email)}</label>
+							<input id="contact-email" name="email" type="email" required>
+						</div>
+					</div>
+					<div class="form-field">
+						<label for="contact-subject">${copy(t.contact.subject)}</label>
+						<input id="contact-subject" name="subject" type="text" required>
+					</div>
+					<div class="form-field">
+						<label for="contact-message">${copy(t.contact.message)}</label>
+						<textarea id="contact-message" name="message" required></textarea>
+					</div>
+					<div class="form-actions">
+						<button class="form-button" type="submit">${copy(t.contact.send)}</button>
+						<span class="form-status" aria-live="polite"></span>
+					</div>
+				</form>
+			</div>
+		`)}
+	`;
 
     document.querySelector('#year').textContent = new Date().getFullYear();
     document.body.classList.add('js-ready');
     observeSections();
+
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const formData = new FormData(contactForm);
+            const name = formData.get('name') || '';
+            const email = formData.get('email') || '';
+            const subject = formData.get('subject') || '';
+            const message = formData.get('message') || '';
+            const mailtoBody = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+            const mailtoLink = `mailto:ahmadessam3300@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailtoBody)}`;
+
+            const status = document.querySelector('.form-status');
+            status.textContent = copy(t.contact.success);
+            window.location.href = mailtoLink;
+            contactForm.reset();
+        });
+    }
 }
 
 function observeSections() {
