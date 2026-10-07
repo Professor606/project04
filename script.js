@@ -118,7 +118,18 @@ const content = {
 
 const main = document.querySelector('#main-content');
 const languageButton = document.querySelector('.language-switch');
+const themeButton = document.querySelector('.theme-switch');
 const copy = (value) => value.replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
+
+function setTheme(theme) {
+    const isLight = theme === 'light';
+    document.documentElement.dataset.theme = isLight ? 'light' : 'dark';
+    themeButton.textContent = isLight ? '☾' : '☼';
+    const label = isLight ? 'Switch to dark theme' : 'Switch to light theme';
+    themeButton.setAttribute('aria-label', label);
+    themeButton.title = label;
+    document.querySelector('meta[name="theme-color"]').content = isLight ? '#f3f7f6' : '#0a0a0b';
+}
 
 function section(id, title, inner, extraClass = '') {
     return `<section class="container section reveal ${extraClass}" id="${id}"><div class="section-heading"><h2 class="gradient-text">${title}</h2></div>${inner}</section>`;
@@ -252,7 +263,13 @@ function currentLanguage() {
 }
 
 let activeLanguage = currentLanguage();
+setTheme(localStorage.getItem('portfolio-theme') === 'light' ? 'light' : 'dark');
 render(activeLanguage);
+themeButton.addEventListener('click', () => {
+    const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+    localStorage.setItem('portfolio-theme', nextTheme);
+    setTheme(nextTheme);
+});
 languageButton.addEventListener('click', () => {
     activeLanguage = activeLanguage === 'en' ? 'ar' : 'en';
     localStorage.setItem('portfolio-language', activeLanguage);
