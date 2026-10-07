@@ -119,7 +119,15 @@ const content = {
 const main = document.querySelector('#main-content');
 const languageButton = document.querySelector('.language-switch');
 const themeButton = document.querySelector('.theme-switch');
+const navigation = document.querySelector('.glass-nav');
+const menuButton = document.querySelector('.menu-toggle');
 const copy = (value) => value.replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
+
+function setMenuOpen(isOpen) {
+    navigation.classList.toggle('is-open', isOpen);
+    menuButton.setAttribute('aria-expanded', String(isOpen));
+    menuButton.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+}
 
 function setTheme(theme) {
     const isLight = theme === 'light';
@@ -265,6 +273,24 @@ function currentLanguage() {
 let activeLanguage = currentLanguage();
 setTheme(localStorage.getItem('portfolio-theme') === 'light' ? 'light' : 'dark');
 render(activeLanguage);
+menuButton.addEventListener('click', () => {
+    setMenuOpen(menuButton.getAttribute('aria-expanded') !== 'true');
+});
+document.querySelectorAll('.nav-item').forEach((link) => {
+    link.addEventListener('click', () => setMenuOpen(false));
+});
+document.addEventListener('click', (event) => {
+    if (!navigation.contains(event.target)) setMenuOpen(false);
+});
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
+        setMenuOpen(false);
+        menuButton.focus();
+    }
+});
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 700) setMenuOpen(false);
+});
 themeButton.addEventListener('click', () => {
     const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
     localStorage.setItem('portfolio-theme', nextTheme);
