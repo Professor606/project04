@@ -1,46 +1,205 @@
-const content = {
+// ── Your details (change them here, not inside the page code) ───────────────
+const EMAIL = 'ahmadessam3300@gmail.com';
+const LINKEDIN_URL = 'https://linkedin.com/in/ellprofessor';
+const GITHUB_URL = 'https://github.com/Professor606';
+const LOCATION = 'Amman, Jordan';
+// Path to your CV. Leave it '' to hide the "Download CV" button.
+const RESUME_URL = 'assets/Ahmad-Essam-CV.pdf';
+
+// ── Translations: all the text on the page, in English (en) and Arabic (ar) ─
+const translations = {
     en: {
-        lang: 'en', dir: 'ltr', title: 'Ahmad Essam Abu Laban | Penetration Tester & Bug Bounty Hunter — Jordan',
-        description: 'Cybersecurity student from Jordan focused on offensive security, penetration testing, vulnerability disclosure, and cloud infrastructure. Open to internships.',
-        nav: { about: 'About', projects: 'Projects', achievements: 'Achievements', hobbies: 'Hobbies', contact: 'Contact', switch: 'عربي' },
-        hero: { badge: 'Cybersecurity & Cloud Student', hi: "Hi, I'm", name: 'Ahmad Essam Abu Laban', tagline: 'Passionate about offensive security, penetration testing, and cloud infrastructure. Discovering vulnerabilities and building secure, dynamic applications.', contact: 'Contact Me', linkedin: 'LinkedIn', github: 'GitHub' },
-        about: { title: 'About Me', highlight: 'Cybersecurity & Cloud Computing student', before: 'Motivated ', after: ' with hands-on experience in web application security testing, vulnerability disclosure, and cloud deployments. Discovered and responsibly disclosed a critical IDOR vulnerability in a live university system, winning a bug bounty award. Skilled in offensive security techniques, Linux administration, and full-stack web development.' },
-        journey: { title: 'My Journey', education: 'Education', university: 'Ajloun National University', degree: 'B.Sc. in Cybersecurity and Cloud Computing', location: 'Ajloun, Jordan', graduation: 'Expected Graduation: 2028', courseworkLabel: 'Relevant Coursework', coursework: 'Network Security, Cloud Architecture, Web Application Security, Operating Systems, Python, JavaScript, C++, Cryptography, Data Structures and Algorithms, Database Systems, Artificial Intelligence' },
+        dir: 'ltr',
+        lang: 'en',
+        meta: {
+            title: 'Ahmad Essam Abu Laban | Application Security & Penetration Testing',
+            description: 'Application security and penetration testing practitioner focused on web and API security, vulnerability research, security automation, and cloud infrastructure. Disclosed high-severity vulnerabilities and earned a $100 security competition award.'
+        },
+        nav: {
+            about: 'About',
+            projects: 'Projects',
+            achievements: 'Achievements',
+            hobbies: 'Hobbies',
+            contact: 'Contact',
+            switchLabel: 'عربي'
+        },
+        hero: {
+            badge: 'Application Security & Vulnerability Research',
+            hi: "Hi, I'm",
+            name: 'Ahmad Essam Abu Laban',
+            tagline: 'I identify web application vulnerabilities, assess security impact, and build practical tools for security testing. Combining hands-on vulnerability research with software development, automation, and cloud infrastructure.',
+            resume: 'Download CV',
+            contact: 'Contact Me',
+            linkedin: 'LinkedIn',
+            github: 'GitHub'
+        },
+        about: {
+            title: 'About Me',
+            highlight: 'Application Security & Vulnerability Research',
+            bodyPre: '',
+            bodyPost: ' focused on web application security, API testing, vulnerability research, and security automation. Identified and responsibly disclosed a Cross-Context Script Execution vulnerability reported at CVSS 8.3 and an IDOR vulnerability reported at CVSS 7.1 in a production information system that could expose sensitive information associated with 15,000+ users. Earned a $100 award for identifying an authentication-bypass vulnerability. Builds practical security and development tools using JavaScript, Node.js, REST APIs, and Linux, with hands-on exposure to AWS infrastructure. Brings analytical thinking, systematic troubleshooting, technical documentation, independent problem-solving, and a focus on evidence-based security findings.'
+        },
         skills: {
-            title: 'Technical Skills', categories: [
-                { title: 'Security & Tools', skills: ['Web App Pentesting', 'Vulnerability Assessment', 'OSINT', 'Burp Suite', 'OWASP Top 10', 'Evil Twin', 'Captive Portal'] },
-                { title: 'Cloud & Systems', skills: ['AWS EC2', 'Linux Admin (Ubuntu/Debian)', 'VPS Configuration', 'Networking', 'Troubleshooting'] },
-                { title: 'Development', skills: ['JavaScript', 'Python', 'Node.js', 'Express.js', 'Next.js', 'HTML/CSS', 'Git', 'GitHub', 'REST APIs'] }
+            title: 'Technical Skills',
+            categories: [
+                {
+                    title: 'Application Security',
+                    skills: [
+                        'Web Application Pentesting',
+                        'API Security Testing',
+                        'Vulnerability Assessment',
+                        'Authentication & Access Control',
+                        'Burp Suite'
+                    ]
+                },
+                {
+                    title: 'Cloud & Systems',
+                    skills: [
+                        'AWS EC2',
+                        'Linux Admin (Ubuntu/Debian)',
+                        'VPS Configuration',
+                        'Networking',
+                        'Troubleshooting',
+                        'SSH',
+                        'Docker'
+                    ]
+                },
+                {
+                    title: 'Development',
+                    skills: [
+                        'JavaScript',
+                        'Node.js',
+                        'Express.js',
+                        'Next.js',
+                        'HTML/CSS',
+                        'Git',
+                        'GitHub',
+                        'REST APIs',
+                        'TypeScript'
+                    ]
+                }
             ]
         },
         projects: {
-            title: 'Key Projects', items: [
-                { title: 'project00 - Linux & Git/Github', link: 'https://github.com/Professor606/discovery-web-piscine', bullets: ['Learned the fundamentals of Linux command-line interface and Git version control system.'      ] },
-                { title: 'project01 - HTML', link: 'https://github.com/Professor606/project01', bullets: ['Learned the basics of HTML and its application in web development.'] },
-                { title: 'project02 - CSS', link: 'https://github.com/Professor606/project02', bullets: ['Learned the fundamentals of CSS and its application in web development.'] },
-                { title: 'project03 - JavaScript', link: 'https://github.com/Professor606/project03', bullets: ['Learned the basics of JavaScript and its application in web development.', 'Built a simple todo app using HTML, CSS, and JavaScript.'] },
-                { title: 'PingPoint — Web-Based HTTP Client', link: 'https://github.com/Professor606/PingPoint', bullets: ['Engineered a lightweight, purely web-based HTTP client to test APIs, craft custom requests, and analyze responses directly from the browser without desktop installation dependencies.', 'Implemented a clear UI for executing complete HTTP methods (GET, POST, PUT, DELETE, PATCH), injecting custom headers/parameters, and rendering real-time response bodies with metric timings using vanilla HTML, CSS, and JavaScript.'] },
-                { title: 'Web Fingerprinting & Client Data Exposure Audit', link: 'https://github.com/Professor606/web-fingerprinting', bullets: ['Built a full-stack web application (Node.js, Express.js) that demonstrates data collectable from a single link click, including IP-based geolocation, screen resolution and color depth, and platform/OS information.', 'Highlighted real-world privacy risks in web tracking and browser fingerprinting for security awareness.'] },
-                { title: 'Network Security Simulation — Evil Twin & Captive Portal', link: 'https://github.com/Professor606/Evil-Twin-Captive-Portal', bullets: ['Engineered a controlled lab using hostapd, dnsmasq, and a custom Node.js captive portal to simulate Evil Twin attacks and WPA2 handshake capture.', 'Documented network segmentation weaknesses and proposed mitigation strategies for enterprise Wi-Fi security.'] },
-                { title: 'OpenClaw — AI Personal Productivity Assistant', link: '', bullets: ['Deployed an AI-powered assistant on AWS EC2 for automated task scheduling, daily workflow optimization, health tracking, and real-time data retrieval.', 'Integrated API services and built custom automation pipelines to streamline personal productivity.'] }
+            title: 'Key Projects',
+            items: [
+                {
+                    title: 'Nexus MCP',
+                    link: 'https://github.com/professor606/nexus-mcp',
+                    bullets: [
+                        'Developed a high-performance Model Context Protocol (MCP) server for security professionals, integrating AI assistants with industry-standard penetration testing and bug bounty tools.',
+                        'Implemented profile-based toolsets, smart chaining for multi-tool workflows, and AI-driven suggestions to optimize context windows and enhance security assessment efficiency.',
+                        'Engineered robust security controls, including explicit opt-in requirements and AST-based validation for high-risk exploit tools to mitigate arbitrary remote code execution (RCE) risks.'
+                    ]
+                },
+                {
+                    title: 'PingPoint — Web-Based HTTP Client',
+                    link: 'https://github.com/Professor606/PingPoint',
+                    bullets: [
+                        'Engineered a lightweight, purely web-based HTTP client to test APIs, craft custom requests, and analyze responses directly from the browser without desktop installation dependencies.',
+                        'Implemented a clear UI for executing complete HTTP methods (GET, POST, PUT, DELETE, PATCH), injecting custom headers/parameters, and rendering real-time response bodies with metric timings using vanilla HTML, CSS, and JavaScript.'
+                    ]
+                },
+                {
+                    title: 'Web Fingerprinting & Client Data Exposure Audit',
+                    link: 'https://github.com/Professor606/web-fingerprinting',
+                    bullets: [
+                        'Built a full-stack web application (Node.js, Express.js) that demonstrates the extent of user data collectable from a single link click, including IP-based geolocation, screen resolution and color depth, and platform/OS information.',
+                        'Highlighted real-world privacy risks in web tracking and browser fingerprinting for security awareness.'
+                    ]
+                },
+                {
+                    title: 'Network Security Simulation — Evil Twin & Captive Portal',
+                    link: 'https://github.com/Professor606/Evil-Twin-Captive-Portal',
+                    bullets: [
+                        'Engineered a controlled lab environment using hostapd, dnsmasq, and a custom Node.js captive portal to simulate Evil Twin attacks and WPA2 handshake capture.',
+                        'Documented network segmentation weaknesses and proposed mitigation strategies for enterprise Wi-Fi security.'
+                    ]
+                },
+                {
+                    title: 'OpenClaw — AI Personal Productivity Assistant',
+                    bullets: [
+                        'Deployed an AI-powered assistant on AWS EC2 for automated task scheduling, daily workflow optimization, health tracking, and real-time data retrieval.',
+                        'Integrated API services and built custom automation pipelines to streamline personal productivity.'
+                    ]
+                }
             ]
         },
         achievements: {
-            title: 'Achievements', items: [
-                { title: 'Responsible Disclosure', org: 'ANU Moodle LMS', date: '2026', text: 'Discovered and responsibly disclosed a critical stored XSS vulnerability (CVSS 9.0+) in a live university LMS that could have exposed sensitive academic records and enabled unauthorized grade manipulation.' },
-                { title: 'Responsible Disclosure', org: 'ANU SIS Portal', date: '2025', text: 'Discovered and responsibly disclosed a critical IDOR vulnerability (CVSS 8.5) in a live university system that could have exposed the personal data of thousands of students.' },
-                { title: 'Bug Bounty Winner', org: 'ANU', date: '2025', text: 'Identified a critical authentication bypass vulnerability during a university competition, earning a $100 bounty award.' },
-                { title: 'TryHackMe Advent of Cyber', org: 'TryHackMe', date: '2025', text: 'Completed all 24 daily challenges spanning SOC operations, web exploitation, log analysis, and digital forensics.' },
-                { title: 'HackTheBox University CTF 2025', org: 'HackTheBox', date: '2025', text: 'Placed 370th out of 1,014 competing teams in the global university-tier CTF competition.' }
+            title: 'Achievements',
+            items: [
+                {
+                    title: 'Responsible Disclosure',
+                    org: 'Learning Management System (LMS)',
+                    date: '2026',
+                    description: 'Discovered and responsibly disclosed a  high-severity Cross-Context Script Execution vulnerability (CVSS 8.3) in a live Learning Management System (LMS), potentially enabling unauthorized access to sensitive user information and grade manipulation.'
+                },
+                {
+                    title: 'Responsible Disclosure',
+                    org: 'Student Information System (SIS) Portal',
+                    date: '2025',
+                    description: 'Discovered and responsibly disclosed a high-severity Insecure Direct Object Reference (IDOR) vulnerability (CVSS 7.1) in a live Student Information System (SIS), potentially exposing sensitive information belonging to 15,000+ users.',
+                    link: 'https://github.com/Professor606/vulnerability-writeups/tree/main/2025/Web-Applications/IDOR-Student-Portal',
+                    linkLabel: 'Write-up'
+                },
+                {
+                    title: 'Bug Bounty Winner',
+                    org: 'ANU',
+                    date: '2025',
+                    description: 'Identified a high-severity authentication bypass vulnerability during a university competition, earning a $100 bounty award.'
+                },
+                {
+                    title: 'TryHackMe Advent of Cyber',
+                    org: 'TryHackMe',
+                    date: '2025',
+                    description: 'Completed all 24 daily challenges spanning SOC operations, web exploitation, log analysis, and digital forensics.'
+                },
+                {
+                    title: 'HackTheBox University CTF 2025',
+                    org: 'HackTheBox',
+                    date: '2025',
+                    description: 'Placed 370th out of 1,014 competing teams in the global university-tier CTF competition.'
+                }
             ]
         },
-        languages: { title: 'Languages', items: [{ flag: '🇯🇴', name: 'Arabic', level: 'Native' }, { flag: '🇬🇧', name: 'English', level: 'Advanced (C1)' }] },
+        journey: {
+            title: 'My Journey',
+            educationLabel: 'Education',
+            university: 'Ajloun National University',
+            degree: 'B.Sc. in Cybersecurity and Cloud Computing',
+            graduation: 'Expected Graduation: 2028',
+            location: 'Ajloun, Jordan'
+        },
+        languages: {
+            title: 'Languages',
+            items: [
+                { flag: '🇯🇴', name: 'Arabic', level: 'Native' },
+                { flag: '🇬🇧', name: 'English', level: 'Advanced' }
+            ]
+        },
         hobbies: {
-            title: 'Hobbies & Interests', items: [
-                { icon: '💻', title: 'Building and Experimenting', text: 'I enjoy exploring new tools, experimenting with security labs, and turning ideas into practical side projects.' },
-                { icon: '🔐', title: 'Cybersecurity Practice', text: 'I like testing vulnerabilities in controlled environments, reading write-ups, and improving my offensive security workflow.' },
-                { icon: '📚', title: 'Learning & Reading', text: 'I spend time reading technical articles, learning from open-source communities, and staying current on cloud and security trends.' },
-                { icon: '🏃', title: 'Outdoors & Movement', text: 'I value balance through hiking, walking, and staying active to stay creative and focused.' }
+            title: 'Hobbies & Interests',
+            items: [
+                {
+                    icon: '💻',
+                    title: 'Building and Experimenting',
+                    text: 'I enjoy exploring new tools, experimenting with security labs, and turning ideas into practical side projects.'
+                },
+                {
+                    icon: '🔐',
+                    title: 'Cybersecurity Practice',
+                    text: 'I like testing vulnerabilities in controlled environments, reading write-ups, and improving my offensive security workflow.'
+                },
+                {
+                    icon: '📚',
+                    title: 'Learning & Reading',
+                    text: 'I spend time reading technical articles, learning from open-source communities, and staying current on cloud and security trends.'
+                },
+                {
+                    icon: '🏃',
+                    title: 'Outdoors & Movement',
+                    text: 'I value balance through hiking, walking, and staying active to stay creative and focused.'
+                }
             ]
         },
         contact: {
@@ -58,46 +217,195 @@ const content = {
         footer: { name: 'Ahmad Essam Abu Laban', rights: 'All rights reserved.' }
     },
     ar: {
-        lang: 'ar', dir: 'rtl', title: 'أحمد عصام أبو لبن | مختبر اختراق وصائد ثغرات — الأردن',
-        description: 'طالب أمن سيبراني من الأردن، مهتم بالأمن الهجومي واختبار الاختراق والإفصاح عن الثغرات والحوسبة السحابية. متاح لفرص التدريب.',
-        nav: { about: 'عنّي', projects: 'المشاريع', achievements: 'الإنجازات', hobbies: 'الهوايات', contact: 'التواصل', switch: 'English' },
-        hero: { badge: 'طالب أمن سيبراني وحوسبة سحابية', hi: 'مرحباً، أنا', name: 'أحمد عصام أبو لبن', tagline: 'شغوف بالأمن الهجومي، واختبار اختراق المواقع، والبنية التحتية السحابية. أكتشف الثغرات وأبني تطبيقات آمنة.', contact: 'تواصل معي', linkedin: 'لينكد إن', github: 'GitHub' },
-        about: { title: 'عنّي', highlight: 'طالب في الأمن السيبراني والحوسبة السحابية', before: '', after: ' لديه خبرة عملية في اختبار أمان تطبيقات الويب والإفصاح عن الثغرات والنشر السحابي. اكتشف وأفصح بمسؤولية عن ثغرة IDOR حرجة في نظام جامعي حي وفاز بجائزة مكافأة. يمتلك مهارات في الأمن الهجومي وإدارة Linux وتطوير الويب الشامل.' },
-        journey: { title: 'مسيرتي', education: 'التعليم', university: 'جامعة عجلون الوطنية', degree: 'بكالوريوس في الأمن السيبراني والحوسبة السحابية', location: 'عجلون، الأردن', graduation: 'التخرج المتوقع: 2028', courseworkLabel: 'المواد الدراسية ذات الصلة', coursework: 'أمن الشبكات، هندسة السحابة، أمان تطبيقات الويب، أنظمة التشغيل، Python، JavaScript، التشفير، هياكل البيانات والخوارزميات، قواعد البيانات، الذكاء الاصطناعي' },
+        dir: 'rtl',
+        lang: 'ar',
+        meta: {
+            title: 'أحمد عصام أبو لبن | أمن التطبيقات واختبار الاختراق',
+            description: 'ممارس في مجال أمن التطبيقات واختبار الاختراق، أركز على أمن الويب وواجهات برمجة التطبيقات (API)، وبحوث الثغرات، وأتمتة المهام الأمنية، والبنية التحتية السحابية. اكتشفت وأبلغت عن ثغرات أمنية عالية الخطورة وحصلت على جائزة بقيمة 100 دولار في إحدى المسابقات الأمنية.'
+        },
+        nav: {
+            about: 'نبذة عني',
+            projects: 'المشاريع',
+            achievements: 'الإنجازات',
+            hobbies: 'الهوايات',
+            contact: 'التواصل',
+            switchLabel: 'English'
+        },
+        hero: {
+            badge: 'أمن التطبيقات وبحوث الثغرات',
+            hi: 'مرحباً، أنا',
+            name: 'أحمد عصام أبو لبن',
+            tagline: 'أعمل على اكتشاف ثغرات تطبيقات الويب، وتقييم تأثيرها الأمني، وبناء أدوات عملية لاختبار الأمان. أجمع بين الخبرة العملية في بحوث الثغرات وتطوير البرمجيات، والأتمتة، والبنية التحتية السحابية.',
+            resume: 'تحميل السيرة الذاتية',
+            contact: 'تواصل معي',
+            linkedin: 'LinkedIn',
+            github: 'GitHub'
+        },
+        about: {
+            title: 'نبذة عني',
+            highlight: 'أمن التطبيقات وبحوث الثغرات',
+            bodyPre: '',
+            bodyPost: ' أركز على أمن تطبيقات الويب، واختبار واجهات برمجة التطبيقات (API)، وبحوث الثغرات، والأتمتة الأمنية. قمت باكتشاف والإبلاغ المسؤول عن ثغرة (Cross-Context Script Execution) تم تقييمها بدرجة خطورة (CVSS 8.3)، وثغرة (IDOR) بدرجة (CVSS 7.1) في نظام معلوماتي حي كان من الممكن أن تؤدي إلى تسريب معلومات حساسة لأكثر من 15,000 مستخدم. حصلت على جائزة بقيمة 100 دولار لاكتشافي ثغرة تجاوز المصادقة (Authentication-bypass). أعمل على تطوير أدوات أمنية وبرمجية عملية باستخدام JavaScript و Node.js و REST APIs وأنظمة Linux، بالإضافة إلى خبرة عملية في البنية التحتية لسحابة AWS. أتميز بالتفكير التحليلي، والمنهجية في استكشاف الأخطاء وإصلاحها، والتوثيق الفني، والقدرة على حل المشكلات بشكل مستقل، مع التركيز دائماً على النتائج الأمنية المبنية على الأدلة.'
+        },
         skills: {
-            title: 'المهارات التقنية', categories: [
-                { title: 'الأمن والأدوات', skills: ['اختبار أمان تطبيقات الويب', 'تقييم الثغرات', 'OSINT', 'Burp Suite', 'OWASP Top 10', 'Evil Twin', 'Captive Portal'] },
-                { title: 'السحابة والأنظمة', skills: ['AWS EC2', 'إدارة Linux (Ubuntu/Debian)', 'إعداد VPS', 'الشبكات', 'استكشاف الأعطال'] },
-                { title: 'التطوير', skills: ['JavaScript', 'Python', 'Node.js', 'Express.js', 'Next.js', 'HTML/CSS', 'Git', 'GitHub', 'REST APIs'] }
+            title: 'المهارات التقنية',
+            categories: [
+                {
+                    title: 'أمن التطبيقات',
+                    skills: [
+                        'اختبار اختراق تطبيقات الويب',
+                        'اختبار أمان واجهات برمجة التطبيقات (API)',
+                        'تقييم الثغرات الأمنية',
+                        'المصادقة والتحكم في الوصول',
+                        'Burp Suite'
+                    ]
+                },
+                {
+                    title: 'الأنظمة والخدمات السحابية',
+                    skills: [
+                        'AWS EC2',
+                        'إدارة أنظمة لينكس (Ubuntu/Debian)',
+                        'إعداد الخوادم الافتراضية (VPS)',
+                        'الشبكات',
+                        'استكشاف الأخطاء وإصلاحها',
+                        'SSH',
+                        'Docker'
+                    ]
+                },
+                {
+                    title: 'تطوير البرمجيات',
+                    skills: [
+                        'JavaScript',
+                        'Node.js',
+                        'Express.js',
+                        'Next.js',
+                        'HTML/CSS',
+                        'Git',
+                        'GitHub',
+                        'REST APIs',
+                        'TypeScript'
+                    ]
+                }
             ]
         },
         projects: {
-            title: 'المشاريع الرئيسية', items: [
-                { title: 'المشروع 00 - Linux و Git/GitHub', link: 'https://github.com/Professor606/discovery-web-piscine', bullets: ['تعلمت أساسيات واجهة سطر الأوامر في Linux ونظام التحكم بالإصدارات Git.'] },
-{ title: 'المشروع 01 - HTML', link: 'https://github.com/Professor606/project01', bullets: ['تعلمت أساسيات HTML وتطبيقاتها في تطوير الويب.'] },
-{ title: 'المشروع 02 - CSS', link: 'https://github.com/Professor606/project02', bullets: ['تعلمت أساسيات CSS وتطبيقاتها في تطوير الويب.'] },
-{ title: 'المشروع 03 - JavaScript', link: 'https://github.com/Professor606/project03', bullets: ['تعلمت أساسيات JavaScript وتطبيقاتها في تطوير الويب.', 'أنشأت تطبيقًا بسيطًا لقائمة المهام (To-Do) باستخدام HTML وCSS وJavaScript.'] },
-                { title: 'تدقيق بصمة الويب وكشف بيانات الزائر', link: 'https://github.com/Professor606/web-fingerprinting', bullets: ['بنى تطبيق ويب متكاملاً (Node.js وExpress.js) يوضح البيانات القابلة للجمع بنقرة واحدة، ومنها الموقع عبر IP ودقة الشاشة ومعلومات المنصة ونظام التشغيل.', 'سلّط الضوء على مخاطر الخصوصية في تتبع الويب وبصمة المتصفح للتوعية الأمنية.'] },
-                { title: 'محاكاة أمان الشبكات — Evil Twin', link: 'https://github.com/Professor606/Evil-Twin-Captive-Portal', bullets: ['بنى بيئة مختبرية محكومة باستخدام hostapd وdnsmasq وبوابة Node.js لمحاكاة هجمات Evil Twin والتقاط مصافحة WPA2.', 'وثّق نقاط ضعف تجزئة الشبكة واقترح استراتيجيات تخفيف لأمان Wi-Fi المؤسسي.'] },
-                { title: 'OpenClaw — مساعد شخصي بالذكاء الاصطناعي', link: '', bullets: ['نشر مساعداً ذكياً على AWS EC2 لجدولة المهام وتحسين سير العمل وتتبع الصحة واسترجاع البيانات في الوقت الفعلي.', 'دمج خدمات API وبنى خطوط أتمتة مخصصة لتبسيط الإنتاجية الشخصية.'] }
+            title: 'أبرز المشاريع',
+            items: [
+                {
+                    title: 'Nexus MCP',
+                    link: 'https://github.com/professor606/nexus-mcp',
+                    bullets: [
+                        'طورت خادم بروتوكول سياق النموذج (MCP) عالي الأداء للمتخصصين في الأمن، يربط مساعدي الذكاء الاصطناعي بأدوات اختبار الاختراق وصيد الثغرات المعتمدة في المجال.',
+                        'نفذت مجموعات أدوات قائمة على الملفات التعريفية، وسلسلة ذكية لتنفيذ مهام متعددة الأدوات، واقتراحات مدعومة بالذكاء الاصطناعي لتحسين نافذة السياق ورفع كفاءة التقييم الأمني.',
+                        'بنيت ضوابط أمنية متينة، منها اشتراط الموافقة الصريحة والتحقق المبني على شجرة البنية المجردة (AST) لأدوات الاستغلال عالية الخطورة، للحد من مخاطر تنفيذ الشيفرة عن بعد (RCE).'
+                    ]
+                },
+                {
+                    title: 'PingPoint — عميل HTTP قائم على الويب',
+                    link: 'https://github.com/Professor606/PingPoint',
+                    bullets: [
+                        'صممت عميل HTTP خفيف الوزن يعمل بالكامل على الويب لاختبار واجهات برمجة التطبيقات (APIs)، وصياغة طلبات مخصصة، وتحليل الاستجابات مباشرة من المتصفح دون الحاجة لتثبيت برامج على سطح المكتب.',
+                        'طورت واجهة مستخدم واضحة لتنفيذ طرق HTTP بالكامل (GET، POST، PUT، DELETE، PATCH)، وإدخال ترويسات/مُعاملات مخصصة، وعرض نصوص الاستجابة في الوقت الفعلي مع مقاييس زمنية باستخدام تقنيات HTML و CSS و JavaScript الأساسية.'
+                    ]
+                },
+                {
+                    title: 'تدقيق البصمة الرقمية للويب وكشف بيانات العميل',
+                    link: 'https://github.com/Professor606/web-fingerprinting',
+                    bullets: [
+                        'بنيت تطبيق ويب متكامل (Node.js، Express.js) يوضح حجم بيانات المستخدم التي يمكن جمعها من خلال نقرة واحدة على رابط، بما في ذلك الموقع الجغرافي بناءً على عنوان IP، دقة الشاشة وعمق الألوان، ومعلومات نظام التشغيل والمنصة.',
+                        'سلطت الضوء على مخاطر الخصوصية في العالم الحقيقي المرتبطة بتتبع الويب والبصمة الرقمية للمتصفح (Browser Fingerprinting) بهدف التوعية الأمنية.'
+                    ]
+                },
+                {
+                    title: 'محاكاة أمن الشبكات — التوأم الشرير (Evil Twin) والبوابة المقيدة',
+                    link: 'https://github.com/Professor606/Evil-Twin-Captive-Portal',
+                    bullets: [
+                        'صممت بيئة معملية مسيطر عليها باستخدام hostapd و dnsmasq وبوابة مقيدة مخصصة (Captive Portal) مبنية بـ Node.js لمحاكاة هجمات التوأم الشرير والتقاط مصافحة WPA2.',
+                        'وثقت نقاط الضعف في تجزئة الشبكات واقترحت استراتيجيات تخفيف لتعزيز أمان شبكات Wi-Fi في بيئات العمل المؤسسية.'
+                    ]
+                },
+                {
+                    title: 'OpenClaw — مساعد شخصي بالذكاء الاصطناعي للإنتاجية',
+                    bullets: [
+                        'نشرت مساعداً ذكياً مدعوماً بالذكاء الاصطناعي على خوادم AWS EC2 لجدولة المهام تلقائياً، وتحسين سير العمل اليومي، وتتبع الصحة، واسترجاع البيانات في الوقت الفعلي.',
+                        'دمجت خدمات واجهات برمجة التطبيقات (APIs) وبنيت مسارات أتمتة مخصصة لتبسيط وزيادة الإنتاجية الشخصية.'
+                    ]
+                }
             ]
         },
         achievements: {
-            title: 'الإنجازات', items: [
-                { title: 'الإفصاح المسؤول عن ثغرة', org: 'نظام Moodle في جامعة عجلون الوطنية', date: '2026', text: 'اكتشف وأفصح بمسؤولية عن ثغرة XSS مخزنة حرجة (CVSS 9.0+) في نظام إدارة تعلم جامعي نشط، كان من الممكن أن تكشف سجلات أكاديمية حساسة وتسمح بتعديل العلامات دون تصريح.' },
-                { title: 'الإفصاح المسؤول عن ثغرة', org: 'بوابة SIS في جامعة عجلون الوطنية', date: '2025', text: 'اكتشف وأفصح بمسؤولية عن ثغرة IDOR حرجة (CVSS 8.5) في نظام جامعي حي كان يمكنها كشف البيانات الشخصية لآلاف الطلاب.' },
-                { title: 'الفوز بمكافأة اكتشاف ثغرة', org: 'جامعة عجلون الوطنية', date: '2025', text: 'حدّد ثغرة تجاوز للمصادقة خلال مسابقة جامعية وفاز بمكافأة قدرها 100 دولار.' },
-                { title: 'TryHackMe Advent of Cyber', org: 'TryHackMe', date: '2025', text: 'أكمل التحديات اليومية الأربعة والعشرين في عمليات SOC واستغلال الويب وتحليل السجلات والتحقيق الجنائي الرقمي.' },
-                { title: 'HackTheBox University CTF 2025', org: 'HackTheBox', date: '2025', text: 'حصل على المركز 370 من بين 1,014 فريقاً في مسابقة CTF العالمية للجامعات.' }
+            title: 'الإنجازات',
+            items: [
+                {
+                    title: 'اكتشاف وإبلاغ مسؤول (Responsible Disclosure)',
+                    org: 'نظام إدارة التعلم (LMS)',
+                    date: '2026',
+                    description: 'اكتشفت وأبلغت بشكل مسؤول عن ثغرة (Cross-Context Script Execution) حرجة بتقييم (CVSS 8.3) في نظام إدارة تعلم (LMS) فعلي، والتي كان من الممكن أن تسمح بالوصول غير المصرح به لمعلومات المستخدمين الحساسة والتلاعب بالدرجات.'
+                },
+                {
+                    title: 'اكتشاف وإبلاغ مسؤول (Responsible Disclosure)',
+                    org: 'بوابة نظام معلومات الطلاب (SIS)',
+                    date: '2025',
+                    description: 'اكتشفت وأبلغت بشكل مسؤول عن ثغرة (IDOR) حرجة بتقييم (CVSS 7.1) في نظام معلومات طلاب (SIS) فعلي، والتي كان من الممكن أن تؤدي إلى كشف معلومات حساسة لأكثر من 15,000 مستخدم.'
+                },
+                {
+                    title: 'فائز بمكافأة اكتشاف ثغرات (Bug Bounty)',
+                    org: 'جامعة عجلون الوطنية (ANU)',
+                    date: '2025',
+                    description: 'اكتشفت ثغرة حرجة لتجاوز المصادقة أثناء مسابقة جامعية، مما أهّلني للحصول على مكافأة مالية بقيمة 100 دولار.'
+                },
+                {
+                    title: 'تحديات (TryHackMe Advent of Cyber)',
+                    org: 'TryHackMe',
+                    date: '2025',
+                    description: 'أكملت جميع التحديات اليومية الأربعة والعشرين والتي شملت عمليات مركز العمليات الأمنية (SOC)، واستغلال ثغرات الويب، وتحليل السجلات، التحقيق الجنائي الرقمي.'
+                },
+                {
+                    title: 'مسابقة اختراق الجامعات (HackTheBox University CTF)',
+                    org: 'HackTheBox',
+                    date: '2025',
+                    description: 'حققت المركز 370 من أصل 1,014 فريقاً منافساً في المسابقة العالمية لالتقاط العلم (CTF) على مستوى الجامعات.'
+                }
             ]
         },
-        languages: { title: 'اللغات', items: [{ flag: '🇯🇴', name: 'العربية', level: 'اللغة الأم' }, { flag: '🇬🇧', name: 'الإنجليزية', level: 'متقدم (C1)' }] },
+        journey: {
+            title: 'مسيرتي',
+            educationLabel: 'التعليم',
+            university: 'جامعة عجلون الوطنية',
+            degree: 'بكالوريوس في الأمن السيبراني والحوسبة السحابية',
+            graduation: 'سنة التخرج المتوقعة: 2028',
+            location: 'عجلون، الأردن'
+        },
+        languages: {
+            title: 'اللغات',
+            items: [
+                { flag: '🇯🇴', name: 'العربية', level: 'اللغة الأم' },
+                { flag: '🇬🇧', name: 'الإنجليزية', level: 'متقدم' }
+            ]
+        },
         hobbies: {
-            title: 'الهوايات والاهتمامات', items: [
-                { icon: '💻', title: 'البناء والتجريب', text: 'أحب استكشاف الأدوات الجديدة وتجربة مختبرات الأمان وتحويل الأفكار إلى مشاريع جانبية عملية.' },
-                { icon: '🔐', title: 'ممارسة الأمان السيبراني', text: 'أحب اختبار الثغرات في بيئات خاضعة للرقابة وقراءة التقارير وتحسين سير عملي في الأمن الهجومي.' },
-                { icon: '📚', title: 'التعلم والقراءة', text: 'أقضي وقتًا في قراءة المقالات التقنية والتعلم من المجتمعات مفتوحة المصدر ومتابعة الاتجاهات في السحابة والأمن.' },
-                { icon: '🏃', title: 'الهواء الطلق والحركة', text: 'أقدر التوازن من خلال المشي والرحلات الخارجية والبقاء نشيطًا للحفاظ على الإبداع والتركيز.' }
+            title: 'الهوايات والاهتمامات',
+            items: [
+                {
+                    icon: '💻',
+                    title: 'البناء والتجريب',
+                    text: 'أحب استكشاف الأدوات الجديدة وتجربة مختبرات الأمان وتحويل الأفكار إلى مشاريع جانبية عملية.'
+                },
+                {
+                    icon: '🔐',
+                    title: 'ممارسة الأمان السيبراني',
+                    text: 'أحب اختبار الثغرات في بيئات خاضعة للرقابة وقراءة التقارير وتحسين سير عملي في الأمن الهجومي.'
+                },
+                {
+                    icon: '📚',
+                    title: 'التعلم والقراءة',
+                    text: 'أقضي وقتًا في قراءة المقالات التقنية والتعلم من المجتمعات مفتوحة المصدر ومتابعة الاتجاهات في السحابة والأمن.'
+                },
+                {
+                    icon: '🏃',
+                    title: 'الهواء الطلق والحركة',
+                    text: 'أقدر التوازن من خلال المشي والرحلات الخارجية والبقاء نشيطًا للحفاظ على الإبداع والتركيز.'
+                }
             ]
         },
         contact: {
@@ -116,193 +424,339 @@ const content = {
     }
 };
 
+// ── Page elements ───────────────────────────────────────────────────────────
 const main = document.querySelector('#main-content');
+const nav = document.querySelector('.glass-nav');
+const menuButton = document.querySelector('.menu-toggle');
 const languageButton = document.querySelector('.language-switch');
 const themeButton = document.querySelector('.theme-switch');
-const navigation = document.querySelector('.glass-nav');
-const menuButton = document.querySelector('.menu-toggle');
-const copy = (value) => value.replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
+
+// ── Small helpers ───────────────────────────────────────────────────────────
+
+// Makes text safe to put inside HTML.
+function esc(text) {
+    const replacements = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+    return text.replace(/[&<>"']/g, (character) => replacements[character]);
+}
+
+// Turns an array into HTML: one piece of HTML per item, joined together.
+function list(items, toHtml) {
+    return items.map(toHtml).join('');
+}
 
 function setMenuOpen(isOpen) {
-    navigation.classList.toggle('is-open', isOpen);
+    nav.classList.toggle('is-open', isOpen);
     menuButton.setAttribute('aria-expanded', String(isOpen));
     menuButton.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
 }
 
 function setTheme(theme) {
     const isLight = theme === 'light';
-    document.documentElement.dataset.theme = isLight ? 'light' : 'dark';
-    themeButton.textContent = isLight ? '☾' : '☼';
     const label = isLight ? 'Switch to dark theme' : 'Switch to light theme';
+
+    document.documentElement.dataset.theme = isLight ? 'light' : 'dark';
+    document.querySelector('meta[name="theme-color"]').content = isLight ? '#f3f7f6' : '#0a0a0b';
+    themeButton.textContent = isLight ? '☾' : '☼';
     themeButton.setAttribute('aria-label', label);
     themeButton.title = label;
-    document.querySelector('meta[name="theme-color"]').content = isLight ? '#f3f7f6' : '#0a0a0b';
 }
 
-function section(id, title, inner, extraClass = '') {
-    return `<section class="container section reveal ${extraClass}" id="${id}"><div class="section-heading"><h2 class="gradient-text">${title}</h2></div>${inner}</section>`;
+// ── HTML builders (one small function per part of the page) ─────────────────
+
+function section(id, title, innerHtml) {
+    return `
+    <section class="container section reveal" id="${id}">
+    <div class="section-heading"><h2 class="gradient-text">${esc(title)}</h2></div>
+    ${innerHtml}
+    </section>`;
 }
 
-function render(lang) {
-    const t = content[lang];
-    document.documentElement.lang = t.lang;
-    document.documentElement.dir = t.dir;
-    document.title = t.title;
-    document.querySelector('meta[name="description"]').content = t.description;
-    document.querySelectorAll('[data-copy]').forEach((element) => {
-        const keys = element.dataset.copy.split('.');
-        element.textContent = keys.reduce((value, key) => value[key], t);
+function heroHtml(t) {
+    const cvButton = RESUME_URL
+    ? `<a class="hero-btn primary" href="${esc(RESUME_URL)}" download>${esc(t.hero.resume)}</a>`
+    : '';
+    const contactStyle = RESUME_URL ? 'secondary' : 'primary';
+
+    return `
+    <header class="container hero">
+    <div class="hero-content">
+    <div class="hero-badge enter enter-delay-1">${esc(t.hero.badge)}</div>
+    <h1 class="enter enter-delay-2">${esc(t.hero.hi)}<br><span class="gradient-text">${esc(t.hero.name)}</span></h1>
+    <p class="hero-tagline enter enter-delay-3">${esc(t.hero.tagline)}</p>
+    <div class="hero-buttons enter enter-delay-3">
+    ${cvButton}
+    <a class="hero-btn ${contactStyle}" href="mailto:${EMAIL}">${esc(t.hero.contact)}</a>
+    <a class="hero-btn secondary" href="${LINKEDIN_URL}" target="_blank" rel="noopener noreferrer">${esc(t.hero.linkedin)}</a>
+    <a class="hero-btn secondary" href="${GITHUB_URL}" target="_blank" rel="noopener noreferrer">${esc(t.hero.github)}</a>
+    </div>
+    </div>
+    </header>`;
+}
+
+function aboutHtml(t) {
+    const { bodyPre, highlight, bodyPost } = t.about;
+    return `
+    <div class="glass-panel about-panel">
+    <p>${esc(bodyPre)}<strong>${esc(highlight)}</strong>${esc(bodyPost)}</p>
+    </div>`;
+}
+
+function skillsHtml(t) {
+    const cards = list(t.skills.categories, (category) => `
+    <article class="glass-panel skill-card">
+    <h3>${esc(category.title)}</h3>
+    <div class="skill-list">${list(category.skills, (skill) => `<span class="pill">${esc(skill)}</span>`)}</div>
+    </article>`);
+    return `<div class="skill-grid">${cards}</div>`;
+}
+
+function projectsHtml(t) {
+    const cards = list(t.projects.items, (project) => {
+        const link = project.link
+        ? `<a class="pill project-link" href="${esc(project.link)}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>`
+        : '';
+        return `
+        <article class="glass-panel project-card">
+        <div class="project-top"><h3>${esc(project.title)}</h3>${link}</div>
+        <ul>${list(project.bullets, (bullet) => `<li>${esc(bullet)}</li>`)}</ul>
+        </article>`;
     });
-    languageButton.textContent = t.nav.switch;
-    languageButton.setAttribute('aria-label', lang === 'en' ? 'Switch to Arabic' : 'Switch to English');
-
-    const skills = t.skills.categories.map((category) => `
-		<article class="glass-panel skill-card"><h3>${copy(category.title)}</h3><div class="skill-list">${category.skills.map((skill) => `<span class="pill">${copy(skill)}</span>`).join('')}</div></article>`).join('');
-    const projects = t.projects.items.map((project) => `
-		<article class="glass-panel project-card"><div class="project-top"><h3>${copy(project.title)}</h3>${project.link ? `<a class="pill project-link" href="${project.link}" target="_blank" rel="noopener noreferrer">GitHub ↗</a>` : ''}</div><ul>${project.bullets.map((bullet) => `<li>${copy(bullet)}</li>`).join('')}</ul></article>`).join('');
-    const achievements = t.achievements.items.map((item) => `
-		<article class="glass-panel achievement"><div class="achievement-icon" aria-hidden="true">🏆</div><div><h3>${copy(item.title)} <span>— ${copy(item.org)} (${copy(item.date)})</span></h3><p>${copy(item.text)}</p></div></article>`).join('');
-    const languages = t.languages.items.map((item) => `
-		<article class="glass-panel language-card"><div class="language-flag" aria-hidden="true">${item.flag}</div><h3>${copy(item.name)}</h3><p>${copy(item.level)}</p></article>`).join('');
-    const hobbies = t.hobbies.items.map((item) => `
-		<article class="glass-panel hobby-card"><div class="hobby-emoji" aria-hidden="true">${item.icon}</div><h3>${copy(item.title)}</h3><p>${copy(item.text)}</p></article>`).join('');
-
-    main.innerHTML = `
-		<header class="container hero"><div class="hero-content">
-			<div class="hero-badge enter enter-delay-1">${copy(t.hero.badge)}</div>
-			<h1 class="enter enter-delay-2">${copy(t.hero.hi)}<br><span class="gradient-text">${copy(t.hero.name)}</span></h1>
-			<p class="hero-tagline enter enter-delay-3">${copy(t.hero.tagline)}</p>
-			<div class="hero-buttons enter enter-delay-3">
-				<a class="hero-btn primary" href="mailto:ahmadessam3300@gmail.com">${copy(t.hero.contact)}</a>
-				<a class="hero-btn secondary" href="https://linkedin.com/in/ellprofessor" target="_blank" rel="noopener noreferrer">${copy(t.hero.linkedin)}</a>
-				<a class="hero-btn secondary" href="https://github.com/Professor606" target="_blank" rel="noopener noreferrer">${copy(t.hero.github)}</a>
-			</div>
-		</div></header>
-		${section('about', copy(t.about.title), `<div class="glass-panel about-panel"><p>${copy(t.about.before)}<strong>${copy(t.about.highlight)}</strong>${copy(t.about.after)}</p></div>`)}
-		${section('journey', copy(t.journey.title), `<div class="journey-inner"><h3 class="subheading"><span aria-hidden="true">🎓</span>${copy(t.journey.education)}</h3><div class="timeline-item"><article class="glass-panel education-panel"><div class="education-top"><div><h3>${copy(t.journey.university)}</h3><h4>${copy(t.journey.degree)}</h4></div><div class="education-meta"><div>${copy(t.journey.graduation)}</div><div>${copy(t.journey.location)}</div></div></div><ul class="coursework"><li><strong>${copy(t.journey.courseworkLabel)}: </strong>${copy(t.journey.coursework)}</li></ul></article></div></div>`)}
-		${section('skills', copy(t.skills.title), `<div class="skill-grid">${skills}</div>`)}
-		${section('projects', copy(t.projects.title), `<div class="project-grid">${projects}</div>`)}
-		${section('achievements', copy(t.achievements.title), `<div class="achievement-list">${achievements}</div>`)}
-		${section('hobbies', copy(t.hobbies.title), `<div class="hobby-grid">${hobbies}</div>`)}
-		${section('languages', copy(t.languages.title), `<div class="language-grid">${languages}</div>`)}
-		${section('contact', copy(t.contact.title), `
-			<div class="contact-grid">
-				<article class="glass-panel contact-card">
-					<h3>${copy(t.contact.infoTitle)}</h3>
-					<p>${copy(t.contact.intro)}</p>
-					<ul class="contact-list">
-						<li>ahmadessam3300@gmail.com</li>
-						<li>linkedin.com/in/ellprofessor</li>
-						<li>Amman, Jordan</li>
-					</ul>
-				</article>
-				<form class="glass-panel contact-form" id="contact-form" action="mailto:ahmadessam3300@gmail.com" method="post" enctype="text/plain">
-					<div class="form-row">
-						<div class="form-field">
-							<label for="contact-name">${copy(t.contact.name)}</label>
-							<input id="contact-name" name="name" type="text" required>
-						</div>
-						<div class="form-field">
-							<label for="contact-email">${copy(t.contact.email)}</label>
-							<input id="contact-email" name="email" type="email" required>
-						</div>
-					</div>
-					<div class="form-field">
-						<label for="contact-subject">${copy(t.contact.subject)}</label>
-						<input id="contact-subject" name="subject" type="text" required>
-					</div>
-					<div class="form-field">
-						<label for="contact-message">${copy(t.contact.message)}</label>
-						<textarea id="contact-message" name="message" required></textarea>
-					</div>
-					<div class="form-actions">
-						<button class="form-button" type="submit">${copy(t.contact.send)}</button>
-						<span class="form-status" aria-live="polite"></span>
-					</div>
-				</form>
-			</div>
-		`)}
-	`;
-
-    document.querySelector('#year').textContent = new Date().getFullYear();
-    document.body.classList.add('js-ready');
-    observeSections();
-
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const formData = new FormData(contactForm);
-            const name = formData.get('name') || '';
-            const email = formData.get('email') || '';
-            const subject = formData.get('subject') || '';
-            const message = formData.get('message') || '';
-            const mailtoBody = `Name: ${name}\nEmail: ${email}\n\n${message}`;
-            const mailtoLink = `mailto:ahmadessam3300@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mailtoBody)}`;
-
-            const status = document.querySelector('.form-status');
-            status.textContent = copy(t.contact.success);
-            window.location.href = mailtoLink;
-            contactForm.reset();
-        });
-    }
+    return `<div class="project-grid">${cards}</div>`;
 }
 
-function observeSections() {
+function achievementsHtml(t) {
+    const cards = list(t.achievements.items, (item) => {
+        const link = item.link
+        ? `<a class="pill achievement-link" href="${esc(item.link)}" target="_blank" rel="noopener noreferrer">${esc(item.linkLabel)} ↗</a>`
+        : '';
+        return `
+        <article class="glass-panel achievement">
+        <div class="achievement-icon" aria-hidden="true">🏆</div>
+        <div>
+        <h3>${esc(item.title)} <span>— ${esc(item.org)} (${esc(item.date)})</span></h3>
+        <p>${esc(item.description)}</p>
+        ${link}
+        </div>
+        </article>`;
+    });
+    return `<div class="achievement-list">${cards}</div>`;
+}
+
+function journeyHtml(t) {
+    const j = t.journey;
+    return `
+    <div class="journey-inner">
+    <h3 class="subheading"><span aria-hidden="true">🎓</span>${esc(j.educationLabel)}</h3>
+    <div class="timeline-item">
+    <article class="glass-panel education-panel">
+    <div class="education-top">
+    <div><h3>${esc(j.university)}</h3><h4>${esc(j.degree)}</h4></div>
+    <div class="education-meta"><div>${esc(j.graduation)}</div><div>${esc(j.location)}</div></div>
+    </div>
+    </article>
+    </div>
+    </div>`;
+}
+
+function hobbiesHtml(t) {
+    const cards = list(t.hobbies.items, (item) => `
+    <article class="glass-panel hobby-card">
+    <div class="hobby-emoji" aria-hidden="true">${item.icon}</div>
+    <h3>${esc(item.title)}</h3>
+    <p>${esc(item.text)}</p>
+    </article>`);
+    return `<div class="hobby-grid">${cards}</div>`;
+}
+
+function languagesHtml(t) {
+    const cards = list(t.languages.items, (item) => `
+    <article class="glass-panel language-card">
+    <div class="language-flag" aria-hidden="true">${item.flag}</div>
+    <h3>${esc(item.name)}</h3>
+    <p>${esc(item.level)}</p>
+    </article>`);
+    return `<div class="language-grid">${cards}</div>`;
+}
+
+function contactHtml(t) {
+    const c = t.contact;
+    return `
+    <div class="contact-grid">
+    <article class="glass-panel contact-card">
+    <h3>${esc(c.infoTitle)}</h3>
+    <p>${esc(c.intro)}</p>
+    <ul class="contact-list">
+    <li>${EMAIL}</li>
+    <li>${LINKEDIN_URL.replace('https://', '')}</li>
+    <li>${LOCATION}</li>
+    </ul>
+    </article>
+
+    <form class="glass-panel contact-form" id="contact-form">
+    <div class="form-row">
+    <div class="form-field">
+    <label for="contact-name">${esc(c.name)}</label>
+    <input id="contact-name" name="name" type="text" required>
+    </div>
+    <div class="form-field">
+    <label for="contact-email">${esc(c.email)}</label>
+    <input id="contact-email" name="email" type="email" required>
+    </div>
+    </div>
+    <div class="form-field">
+    <label for="contact-subject">${esc(c.subject)}</label>
+    <input id="contact-subject" name="subject" type="text" required>
+    </div>
+    <div class="form-field">
+    <label for="contact-message">${esc(c.message)}</label>
+    <textarea id="contact-message" name="message" required></textarea>
+    </div>
+    <div class="form-actions">
+    <button class="form-button" type="submit">${esc(c.send)}</button>
+    <span class="form-status" aria-live="polite"></span>
+    </div>
+    </form>
+    </div>`;
+}
+
+// ── Contact form: opens the visitor's email app with the message filled in ──
+
+function setUpContactForm(t) {
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const data = new FormData(form);
+        const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`;
+
+        document.querySelector('.form-status').textContent = t.contact.success;
+        window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(data.get('subject'))}&body=${encodeURIComponent(body)}`;
+        form.reset();
+    });
+}
+
+// ── Scroll reveal: sections fade in the first time they enter the screen ────
+
+function revealSectionsOnScroll() {
     const sections = document.querySelectorAll('.reveal');
+
     if (!('IntersectionObserver' in window)) {
         sections.forEach((element) => element.classList.add('is-visible'));
         return;
     }
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
                 entry.target.classList.add('is-visible');
                 observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+            });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
     sections.forEach((element) => observer.observe(element));
 }
 
-function currentLanguage() {
-    const queryLanguage = new URLSearchParams(location.search).get('lang');
-    return queryLanguage === 'ar' || location.pathname.endsWith('/ar') || localStorage.getItem('portfolio-language') === 'ar' ? 'ar' : 'en';
+// ── Draw the whole page in one language ─────────────────────────────────────
+
+function render(lang) {
+    const t = translations[lang];
+
+    // <html> attributes, tab title and search-engine description
+    document.documentElement.lang = t.lang;
+    document.documentElement.dir = t.dir;
+    document.title = t.meta.title;
+    document.querySelector('meta[name="description"]').content = t.meta.description;
+
+    // Elements in index.html that use data-copy="nav.about", "footer.name", ...
+    document.querySelectorAll('[data-copy]').forEach((element) => {
+        const text = element.dataset.copy.split('.').reduce((value, key) => value?.[key], t);
+        if (typeof text === 'string') element.textContent = text;
+    });
+
+        languageButton.textContent = t.nav.switchLabel;
+        languageButton.setAttribute('aria-label', lang === 'en' ? 'Switch to Arabic' : 'Switch to English');
+
+        main.innerHTML = [
+            heroHtml(t),
+            section('about', t.about.title, aboutHtml(t)),
+            section('skills', t.skills.title, skillsHtml(t)),
+            section('projects', t.projects.title, projectsHtml(t)),
+            section('achievements', t.achievements.title, achievementsHtml(t)),
+            section('journey', t.journey.title, journeyHtml(t)),
+            section('hobbies', t.hobbies.title, hobbiesHtml(t)),
+            section('languages', t.languages.title, languagesHtml(t)),
+            section('contact', t.contact.title, contactHtml(t)),
+        ].join('');
+
+        document.querySelector('#year').textContent = new Date().getFullYear();
+        document.body.classList.add('js-ready');
+        revealSectionsOnScroll();
+        setUpContactForm(t);
 }
 
-let activeLanguage = currentLanguage();
-setTheme(localStorage.getItem('portfolio-theme') === 'light' ? 'light' : 'dark');
+// ── Remembered choices (language & theme) ───────────────────────────────────
+
+function getSavedLanguage() {
+    const urlLanguage = new URLSearchParams(location.search).get('lang');
+    if (urlLanguage === 'ar' || location.pathname.endsWith('/ar')) return 'ar';
+    if (localStorage.getItem('portfolio-language') === 'ar') return 'ar';
+    return 'en';
+}
+
+function getSavedTheme() {
+    return localStorage.getItem('portfolio-theme') === 'light' ? 'light' : 'dark';
+}
+
+// ── Start the page and listen for clicks ────────────────────────────────────
+
+let activeLanguage = getSavedLanguage();
+setTheme(getSavedTheme());
 render(activeLanguage);
+
+// Mobile menu: open/close button, close on link click, outside click, Escape, or wider screen
 menuButton.addEventListener('click', () => {
     setMenuOpen(menuButton.getAttribute('aria-expanded') !== 'true');
 });
+
 document.querySelectorAll('.nav-item').forEach((link) => {
     link.addEventListener('click', () => setMenuOpen(false));
 });
+
 document.addEventListener('click', (event) => {
-    if (!navigation.contains(event.target)) setMenuOpen(false);
+    if (!nav.contains(event.target)) setMenuOpen(false);
 });
+
 document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
+    const menuIsOpen = menuButton.getAttribute('aria-expanded') === 'true';
+    if (event.key === 'Escape' && menuIsOpen) {
         setMenuOpen(false);
         menuButton.focus();
     }
 });
+
 window.addEventListener('resize', () => {
     if (window.innerWidth > 700) setMenuOpen(false);
 });
+
+// Theme button
 themeButton.addEventListener('click', () => {
     const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
     localStorage.setItem('portfolio-theme', nextTheme);
     setTheme(nextTheme);
 });
+
+// Language button: switch language, remember it, and keep ?lang=ar in the address bar
 languageButton.addEventListener('click', () => {
     activeLanguage = activeLanguage === 'en' ? 'ar' : 'en';
     localStorage.setItem('portfolio-language', activeLanguage);
+
     const url = new URL(location.href);
     if (activeLanguage === 'ar') url.searchParams.set('lang', 'ar');
     else url.searchParams.delete('lang');
     history.replaceState({}, '', url);
+
     render(activeLanguage);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 });
