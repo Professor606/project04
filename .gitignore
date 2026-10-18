@@ -1,2 +1,3 @@
-ahmad-essam/
-*.pdf
+pdf/
+node_modules/
+.env

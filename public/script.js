@@ -825,31 +825,80 @@ function contactHtml(t) {
 
 // ── Contact form: opens the visitor's email app with the message filled in ──
 
+
 function setUpContactForm(t) {
     const form = document.getElementById('contact-form');
-    form.addEventListener('submit', (event) => {
+    if (!form) return;
+
+    const status = form.querySelector('.form-status');
+    const submitButton = form.querySelector('button[type="submit"]');
+
+    form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
-        const data = new FormData(form);
-        const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`;
+        if (!form.reportValidity()) return;
 
-        document.querySelector('.form-status').textContent = t.contact.success;
-        window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(data.get('subject'))}&body=${encodeURIComponent(body)}`;
-        form.reset();
+        const data = new FormData(form);
+
+        const payload = {
+            name: data.get('name').trim(),
+            email: data.get('email').trim(),
+            subject: data.get('subject').trim(),
+            message: data.get('message').trim()
+        };
+
+        status.textContent = 'Sending...';
+        submitButton.disabled = true;
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            const result = await response.json();
+
+            if (!response.ok || !result.success) {
+                throw new Error(result.error || 'Failed to send message.');
+            }
+
+            status.textContent = activeLanguage === 'ar'
+                ? 'تم إرسال رسالتك بنجاح!'
+                : 'Message sent successfully!';
+
+            form.reset();
+        } catch (error) {
+            console.error('Contact form error:', error);
+
+            status.textContent = activeLanguage === 'ar'
+                ? 'فشل إرسال الرسالة. حاول مرة أخرى.'
+                : 'Failed to send message. Please try again.';
+        } finally {
+            submitButton.disabled = false;
+        }
     });
 
-    // "Copy email" button: copies the address and shows "Copied" for two seconds
+    // Keep the existing copy-email functionality
     const copyButton = document.querySelector('[data-email-copy]');
+
     copyButton?.addEventListener('click', async () => {
         try {
             await navigator.clipboard.writeText(EMAIL);
+
             copyButton.textContent = t.contact.copied;
-            setTimeout(() => { copyButton.textContent = t.contact.copyEmail; }, 2000);
+
+            setTimeout(() => {
+                copyButton.textContent = t.contact.copyEmail;
+            }, 2000);
         } catch {
-            // Clipboard blocked: the address is still a normal mailto link next to the button.
+            // The mailto link remains available as a fallback.
         }
     });
 }
+
 
 // ── Scroll reveal: sections fade in the first time they enter the screen ────
 
