@@ -670,7 +670,7 @@ function heroHtml(t) {
     </div>
     <dl class="hero-stats enter enter-delay-3">${stats}</dl>
     </div>
-    <img class="hero-avatar enter enter-delay-2" src="assets/favicon.jpeg" alt="${esc(t.hero.photoAlt)}" width="300" height="300" decoding="async" fetchpriority="high">
+    <img class="hero-avatar enter enter-delay-2" src="assets/avatar-v2.webp" alt="${esc(t.hero.photoAlt)}" width="300" height="300" decoding="async" fetchpriority="high">
     </div>
     </header>`;
 }
