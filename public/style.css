@@ -1032,6 +1032,8 @@ button:focus-visible {
 	position: relative;
 	z-index: 1;
 	width: clamp(180px, 26vw, 300px);
+	height: auto;
+	flex: 0 0 auto;
 	aspect-ratio: 1;
 	border: 2px solid var(--accent-border);
 	border-radius: 50%;
