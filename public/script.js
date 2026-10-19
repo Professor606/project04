@@ -208,14 +208,18 @@ const translations = {
                     org: 'TryHackMe',
                     date: '2025',
                     icon: 'terminal',
-                    description: 'Completed all 24 daily challenges spanning SOC operations, web exploitation, log analysis, and digital forensics.'
+                    description: 'Completed all 24 daily challenges spanning SOC operations, web exploitation, log analysis, and digital forensics.',
+                    link: '/assets/THM-AOC-2025.pdf',
+                    linkLabel: 'Certificate'
                 },
                 {
                     title: 'HackTheBox University CTF 2025',
                     org: 'HackTheBox',
                     date: '2025',
                     icon: 'flag',
-                    description: 'Placed 370th out of 1,014 competing teams in the global university-tier CTF competition.'
+                    description: 'Placed 370th out of 1,014 competing teams in the global university-tier CTF competition.',
+                    link: '/assets/HTB-UNI-CTF-2025.pdf',
+                    linkLabel: 'Certificate'
                 }
             ]
         },
